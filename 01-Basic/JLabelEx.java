@@ -23,7 +23,7 @@ public class JLabelEx{
         label.setText("Username: ");
         c.add(label);
         
-        label.setBounds(70,200,100,40);
+        label.setBounds(70 ,200,100,40);
         Font font = new Font("Arial",Font.BOLD,17);
         label.setFont(font);
 
