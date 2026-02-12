@@ -14,7 +14,13 @@ class MyFrame extends JFrame implements ActionListener{
     }
 
     public void actionPerformed(ActionEvent e){
-        c.setBackground(Color.BLACK);
+        c.setBackground(Color.YELLOW);
+        JLabel j = new JLabel();
+        j.setText("Hello");
+        c.add(j);
+        j.setBounds(200,120,100,30);
+        
+
     }
 }
 
