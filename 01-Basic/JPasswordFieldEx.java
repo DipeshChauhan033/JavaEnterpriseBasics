@@ -45,14 +45,13 @@ public class JPasswordFieldEx{
         t2.setBounds(110,325,250,25);
         c.add(t2);
 
-        //Modify Field Tetx
+        //Modify Field Text
         //In Username Field
         Font font3 = new Font("Arial",Font.PLAIN,14);
         t1.setFont(font3);
 
         //In Password Field
-        Font font4 = new Font("Arial",Font.PLAIN,14);
-        t2.setFont(font4);
+        t2.setEchoChar('*');  //Showing stars not dots
 
         
         t1.setForeground(Color.WHITE);  //Change color of text in field
