@@ -4,13 +4,16 @@ import java.awt.event.*;
 
 class MyFrame extends JFrame implements ActionListener{
     Container c;
-    JLabel title,name,mobile_no,gender,dob;
+    JLabel title,name,mobile_no,gender,dob,address;
     JTextField namef,mobile_nof;
+    JTextArea addressta;
     JRadioButton male,female;
     ButtonGroup genderselect;
     JComboBox<Integer> day;
     JComboBox<String> month;
     JComboBox<Integer> year;
+    JCheckBox check;
+    JButton submit;
     public MyFrame(){
         c = getContentPane();
         c.setLayout(null);
@@ -91,10 +94,46 @@ class MyFrame extends JFrame implements ActionListener{
         year.setFont(f2); 
         c.add(year);
 
+        address = new JLabel("Address:");
+        address.setBounds(20,220,80,50);
+        address.setFont(f2);
+        c.add(address);
+
+        addressta = new JTextArea();
+        addressta.setBounds(100,235,230,70);
+        Color cream = new Color(255, 255, 240);
+        addressta.setBackground(cream);
+        c.add(addressta);
+
+        check = new JCheckBox("Above details are correct..");
+        check.setBounds(20,320,200,50);
+        Font f3 = new Font("Verdana",Font.BOLD,12);
+        check.setFont(f3);
+        check.setBackground(Color.WHITE);
+        c.add(check);
+
+
+        submit = new JButton("Submit");
+        submit.setBounds(270,330,100,30);
+        c.add(submit);
+        Cursor cr = new Cursor(Cursor.HAND_CURSOR);
+        submit.setCursor(cr);
+        submit.addActionListener(this);
+
     }
 
     public void actionPerformed(ActionEvent e){
-
+        if(check.isSelected()){
+            System.out.println("Name: "+namef.getText());
+            System.out.println("Mobile no: "+mobile_nof.getText());
+            String s = "male";
+            if(female.isSelected()){
+                s="female";
+            }
+            System.out.println("Gender is: "+s);
+            System.out.println("DOB: "+day.getSelectedItem()+" "+month.getSelectedItem()+" "+year.getSelectedItem());
+            System.out.println("Address: "+addressta.getText());
+        }
     }
 }
 
