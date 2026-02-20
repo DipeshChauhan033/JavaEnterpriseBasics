@@ -8,7 +8,7 @@ public class Launch {
 
 	public static void main(String[] args) {
 		try {
-			// Class.forName("com.mysql.cj.jdbc.Driver"); //Optional
+			//Class.forName("com.mysql.cj.jdbc.Driver"); //Optional
 			String url = "jdbc:mysql://localhost:3309";
 			String username = "root";
 			String password="";
