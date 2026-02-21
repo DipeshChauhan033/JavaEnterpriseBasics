@@ -17,4 +17,15 @@ public class ConnectionFactory {
 		}
 		return conn;
 	}
+	
+	public static void close(AutoCloseable StateAndConn) {
+		try {
+			if(StateAndConn!=null) {
+				StateAndConn.close();
+			}
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
 }
