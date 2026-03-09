@@ -8,6 +8,7 @@ public class CustomerLogin {
 	Scanner sc = new Scanner(System.in);
 	Connection conn = null;
 	PreparedStatement preparedstatement = null;
+	ResultSet result = null;
 	public static int cid;
 	public static String pass;
 	
@@ -22,7 +23,6 @@ public class CustomerLogin {
 			
 			System.out.print("Enter Customer ID: ");
 			cid = sc.nextInt();
-			System.out.println();
 			System.out.print("Enter Password: ");
 			pass = sc.next();
 			System.out.println("");
@@ -30,14 +30,15 @@ public class CustomerLogin {
 			preparedstatement.setInt(1,cid);
 			preparedstatement.setString(2, pass);
 			
-			ResultSet result = preparedstatement.executeQuery();			
+			result = preparedstatement.executeQuery();			
 			if(result.next()) {
 				int getcid = result.getInt("cid");
 				String getpass = result.getString("password");
 				
 				if((getcid==cid) && (getpass.equals(pass))) {
 					System.out.println("Authentication completed successfully..\nWelcome to your dashboard.");
-					CustomerFunctionality viewcustomerdetails = new CustomerFunctionality();				}
+					CustomerFunctionality viewcustomerdetails = new CustomerFunctionality();				
+				}
 			}
 			else{
 				System.out.println("USER NOT FOUND");
@@ -48,6 +49,7 @@ public class CustomerLogin {
 			e.printStackTrace();
 		}
 		finally {
+			ConnectionFactory.close(result);
 			ConnectionFactory.close(preparedstatement);
 			ConnectionFactory.close(conn);
 		}

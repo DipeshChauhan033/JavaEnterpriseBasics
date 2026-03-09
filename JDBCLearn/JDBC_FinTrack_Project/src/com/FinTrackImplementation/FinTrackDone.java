@@ -12,7 +12,7 @@ public class FinTrackDone{
 			int choice1 = sc.nextInt();
 			System.out.println();
 			if(choice1==1) {
-				//Admin..
+				new AdminLogin();
 			}
 			else if(choice1==2) {
 				System.out.println("Welcome to the Customer Panel..\n");
