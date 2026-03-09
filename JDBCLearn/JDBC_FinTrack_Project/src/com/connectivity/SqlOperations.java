@@ -940,6 +940,54 @@ public class SqlOperations {
 		}
 	}
 	
+	public void viewAllAccounts() {
+		Connection conn = null;
+		PreparedStatement preparedstatement = null;
+		ResultSet resultset = null;
+		ResultSet resultset2 = null;
+		int cid,acc_id,check_repeat,count=0;
+		String acc_type;
+		BigDecimal balance;
+		try {
+			conn = ConnectionFactory.getConnection();
+			
+			String sql1 = "select distinct(cid) from financial_account order by cid";
+			preparedstatement = conn.prepareStatement(sql1);
+			resultset = preparedstatement.executeQuery();
+			
+			String sql2 = "select acc_id,account_type,balance from financial_account where cid=?";
+			preparedstatement = conn.prepareStatement(sql2);
+	
+			while(resultset.next()) {
+				cid = resultset.getInt("cid");
+				check_repeat = cid;
+				System.out.println("============Customer ID: "+cid);
+				
+				preparedstatement.setInt(1, cid);
+				resultset2 = preparedstatement.executeQuery();
+					
+				while(resultset2.next()) {
+					acc_id = resultset2.getInt("acc_id");
+					acc_type = resultset2.getString("account_type");
+					balance = resultset2.getBigDecimal("balance");
+					
+					System.out.println("Acc ID: "+acc_id+"\n"+"Account Type: "+acc_type+"\n"+"Balance: "+balance);
+					System.out.println("");
+				}
+				
+			}
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
+		finally {
+			ConnectionFactory.close(resultset);
+			ConnectionFactory.close(resultset2);
+			ConnectionFactory.close(preparedstatement);
+			ConnectionFactory.close(conn);
+		}
+	}
+	
 }
 
 class receiveraccounts{

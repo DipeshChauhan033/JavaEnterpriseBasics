@@ -37,10 +37,13 @@ public class AdminLogin {
 					System.out.println("Enter 1 to view all customers");
 					System.out.println("Enter 2 to view all accounts");
 					System.out.print("Please enter your choice: ");
-					System.out.println("");
 					int choice = sc.nextInt();
+					System.out.println("\n");
 					if(choice==1) {
 						adminfunctionality.viewAllCustomers();
+					}
+					else if(choice==2) {
+						adminfunctionality.viewAllAccounts();
 					}
 					else {
 						System.out.println("Invalid choice. Please enter a valid option.");
