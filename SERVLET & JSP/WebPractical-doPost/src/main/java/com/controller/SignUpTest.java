@@ -15,8 +15,12 @@ public class SignUpTest extends HttpServlet {
 		String password = request.getParameter("password");
 		
 		System.out.println("Username: "+username+"\n"+"Password: "+password);
-		PrintWriter write = response.getWriter();
-		write.print("<h1>Sign-up Done...</h1>");
+		
+		//PrintWriter write = response.getWriter();
+		//write.print("<h1>Sign-up Done...</h1>");
+		//response.sendRedirect("index.html");
+		response.sendRedirect("Redirect.html");
+		
 	} 
 
 }
