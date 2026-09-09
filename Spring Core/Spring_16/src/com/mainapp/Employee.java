@@ -1,23 +1,26 @@
 package com.mainapp;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
 @Component
 public class Employee {
 	
-	@Value("1000")
+	//@Value("1000")
 	private int eid;
-	@Value("100")
+	//@Value("Ajay")
 	private String ename;
-	@Value("${db.url}")
+	//@Value("${db.url}")
 	private String url;
 	
 	public Employee() {
 		System.out.println("EMP BEAN INSTANTIATION : ZPC");
 	}
-
-	public Employee(int eid, String ename, String url) {
+	
+	@Autowired
+	public Employee(@Value("1000")int eid, @Value("Akash")String ename, @Value("${db.url}")String url) {
 		super();
 		this.eid = eid;
 		this.ename = ename;
@@ -28,7 +31,8 @@ public class Employee {
 	public int getEid() {
 		return eid;
 	}
-
+	
+	@Value("1000")
 	public void setEid(int eid) {
 		this.eid = eid;
 		System.out.println("EMP BEAN SETTER : EID");
@@ -37,7 +41,8 @@ public class Employee {
 	public String getEname() {
 		return ename;
 	}
-
+	
+	@Value("Ajay")
 	public void setEname(String ename) {
 		this.ename = ename;
 		System.out.println("EMP BEAN SETTER : ENAME");
@@ -46,7 +51,8 @@ public class Employee {
 	public String getUrl() {
 		return url;
 	}
-
+	
+	@Value("${db.url}")
 	public void setUrl(String url) {
 		this.url = url;
 		System.out.println("EMP BEAN SETTER : URL");
